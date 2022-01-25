@@ -1,0 +1,10 @@
+initscript {
+    repositories {
+        mavenLocal()
+    }
+    dependencies {
+        classpath 'org.gradle.github.dependency.extractor:plugin:0.0.1'
+    }
+}
+
+apply plugin: org.gradle.github.dependency.uploader.GithubDependencyUploaderPlugin
