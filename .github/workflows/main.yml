@@ -1,0 +1,23 @@
+name: Java CI with Gradle
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+jobs:
+  run_gradle_detector:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - name: Run gradle bootstrap script
+        run: ./script/plugin-bootstrap
+      - name: Execute Gradle Build
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: -S build --scan

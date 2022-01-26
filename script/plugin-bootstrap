@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+plugin_location="github-dependency-extractor"
+
+# cd to the project root
+cd "$(dirname "$(dirname "$(readlink -f "$0")")")"
+
+# clone the plugin
+git clone https://github.com/juxtin/github-dependency-extractor.git $plugin_location --depth 1
+
+# install the plugin locally
+cd $plugin_location
+./gradlew publishToMavenLocal
+
+echo "Done!"
