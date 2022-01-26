@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Exit if we're not running in GitHub Actions
+if [ -z "${GITHUB_ACTIONS:-}" ]; then
+  echo "Not running in GitHub Actions, exiting..."
+  exit 0
+fi
+
+# Invoke 'build' 
+./gradlew -S --no-configuration-cache -I init.gradle build

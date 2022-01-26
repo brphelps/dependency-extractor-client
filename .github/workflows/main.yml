@@ -21,3 +21,7 @@ jobs:
         uses: gradle/gradle-build-action@v2
         with:
           arguments: -S build --scan
+      - name: Run the plugin
+        run: ./script/cibuild
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
